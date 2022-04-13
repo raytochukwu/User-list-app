@@ -15,7 +15,6 @@ const AdministrationList = () => {
   useEffect(() => {
     setUsers(allUsers)
   }, [allUsers])
-  console.log(allUsers)
   function handleDelete(e) {
     e.preventDefault()
     dispatch(deleteUser(userId))
@@ -24,15 +23,12 @@ const AdministrationList = () => {
   function handleSortAsc(e) {
     e.preventDefault()
     const arr = []
-
     allUsers.map((user) => {
       arr.push(user.username)
       return arr
     })
     const aToZ = arr.sort()
-
     const newArr = []
-
     aToZ.map((username) => {
       let a = allUsers.find((user) => user.username === username)
       newArr.push(a)
@@ -44,16 +40,13 @@ const AdministrationList = () => {
   function handleSortDesc(e) {
     e.preventDefault()
     const arr = []
-
     allUsers.map((user) => {
       arr.push(user.username)
       return arr
     })
     const aToZ = arr.sort()
     const zToA = aToZ.reverse()
-
     const newArr = []
-
     zToA.map((username) => {
       let a = allUsers.find((user) => user.username === username)
       newArr.push(a)

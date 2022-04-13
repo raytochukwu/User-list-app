@@ -26,11 +26,10 @@ const AddUser = () => {
       setEmailEmpty(true)
     } else if (allUsers.find((user) => user.email === newUser.email)) {
       setEmailExist(true)
-    } else if (validator.isEmail(newUser.email) === false) {
+    } else if (validator.isEmail(newUser.email)) {
       setEmailNotValid(true)
     } else {
       dispatch(addUser(newUser))
-      console.log(newUser)
       navigate('/')
     }
   }

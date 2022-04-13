@@ -7,16 +7,6 @@ import validator from 'validator'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../services/users'
 
-// export function getServerSideProps(context) {
-//   const userid = context.params.id
-
-//   return {
-//     props: {
-//       id: userid,
-//     },
-//   }
-// }
-
 const EditUser = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -26,8 +16,7 @@ const EditUser = () => {
   const [namelEmpty, setNameEmpty] = useState(false)
   const [emailEmpty, setEmailEmpty] = useState(false)
   const [emailNotValid, setEmailNotValid] = useState(false)
-  const { id } = useParams()
-  const userid = id
+  const { id: userid } = useParams()
 
   const user = allUsers.find((user) => user.id === parseInt(userid))
 
