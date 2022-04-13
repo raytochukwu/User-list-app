@@ -3,14 +3,15 @@ import './App.css'
 import AdministrationList from './components/AdministrationList'
 import AddUser from './components/AddUser'
 import EditUser from './components/EditUser'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const allUsers = useSelector((state) => state.users.value)
   async function loadData() {
     const response = await fetch(
       'https://my-json-server.typicode.com/karolkproexe/jsonplaceholderdb/data'
     )
     const data = await response.json()
-
     return data
   }
   loadData().then((data) => {
@@ -18,7 +19,11 @@ function App() {
       const users = JSON.stringify(data)
       localStorage.setItem('users', users)
     }
+    if (allUsers === null) {
+      window.location.reload(true)
+    }
   })
+
   return (
     <>
       <Routes>
