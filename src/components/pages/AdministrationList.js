@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Layout from './Layout'
+import Layout from '../features/Layout'
 import style from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteUser } from '../services/users'
+import { deleteUser } from '../../services/users'
+import Table from '../features/Table'
 
 const AdministrationList = () => {
   const navigate = useNavigate()
@@ -92,6 +93,7 @@ const AdministrationList = () => {
             Add new
           </button>
         </div>
+
         <div className="table-Con">
           <div style={{ padding: '8px' }}>
             <div style={{ display: 'flex', marginBottom: '8px' }}>
@@ -117,51 +119,13 @@ const AdministrationList = () => {
                 Desc
               </button>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <td>Id</td>
-                  <td>Name</td>
-                  <td>Username</td>
-                  <td>Email</td>
-                  <td>city</td>
-                  <td>Edit</td>
-                  <td>Delete</td>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user?.id}</td>
-                    <td>{user?.name}</td>
-                    <td>{user?.username}</td>
-                    <td>{user?.email}</td>
-                    <td>{user?.address?.city}</td>
-                    <td>
-                      <button
-                        className="btn1"
-                        onClick={() => {
-                          navigate(`/editUser/${user.id}`)
-                        }}
-                      >
-                        edit
-                      </button>
-                    </td>
-                    <td className="">
-                      <button
-                        className="btn2"
-                        onClick={() => {
-                          setModalOpen(true)
-                          setUserId(user.id)
-                        }}
-                      >
-                        delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+            <Table
+              users={users}
+              navigate={navigate}
+              setModalOpen={setModalOpen}
+              setUserId={setUserId}
+            />
           </div>
         </div>
       </Container>
@@ -202,44 +166,6 @@ box-shadow: 1px 1px 5px 2px rgb(0 0 0 / 15%);
 width:100%;
 overflow: scroll;
 margin-bottom:50px;
-
-table{
-    width:100%;
-    min-width: 800px;
-    border:2px solid lightgrey;
-    border-collapse: collapse;
-   
-    tr{
-        height:100px;
-        border-bottom:2px solid lightgrey; 
-    }
-    thead{
-        text-align:center;
-        background:#EFEFEF;       
-    }
-    tbody{
-        text-align:center;
-    }
-    td{
-        width:14.3%;      
-    }
-  .btn1{
-    width: 70px;
-    background: orange;
-    height: 25px;
-    border-radius: 4px;
-    border: none;
-    color: white;
-  }
-  .btn2{
-    width: 70px;
-    background: red;
-    height: 25px;
-    border-radius: 4px;
-    border: none;
-    color: white;
-  }
- }
 }
 
 `

@@ -1,11 +1,11 @@
 import React from 'react'
-import Layout from './Layout'
+import Layout from '../features/Layout'
 import style from 'styled-components'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useRef } from 'react'
 import validator from 'validator'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateUser } from '../services/users'
+import { updateUser } from '../../services/users'
 
 const EditUser = () => {
   const navigate = useNavigate()

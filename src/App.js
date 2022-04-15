@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import AdministrationList from './components/AdministrationList'
-import AddUser from './components/AddUser'
-import EditUser from './components/EditUser'
+import AdministrationList from './components/pages/AdministrationList'
+import AddUser from './components/pages/AddUser'
+import EditUser from './components/pages/EditUser'
 import { useSelector } from 'react-redux'
 
 function App() {

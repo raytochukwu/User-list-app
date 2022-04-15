@@ -1,9 +1,9 @@
 import React from 'react'
-import Layout from './Layout'
+import Layout from '../features/Layout'
 import style from 'styled-components'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addUser } from '../services/users'
+import { addUser } from '../../services/users'
 import validator from 'validator'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -26,7 +26,7 @@ const AddUser = () => {
       setEmailEmpty(true)
     } else if (allUsers.find((user) => user.email === newUser.email)) {
       setEmailExist(true)
-    } else if (validator.isEmail(newUser.email)) {
+    } else if (validator.isEmail(newUser.email) === false) {
       setEmailNotValid(true)
     } else {
       dispatch(addUser(newUser))
